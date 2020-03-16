@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+class MovieDetailsViewModel {
+    
+    var movie: Movie?
+    
+}

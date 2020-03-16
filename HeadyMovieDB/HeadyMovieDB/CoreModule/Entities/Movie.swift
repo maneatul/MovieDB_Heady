@@ -25,15 +25,29 @@ struct MovieList: Decodable {
 
 struct Movie: Decodable {
     let popularity: Double?
-    let vote_count: Int?
-    let poster_path: String?
+    let voteCount: Int?
+    let posterPath: String?
     let id: Int?
     let adult: Bool?
-    let original_language: String?
-    let original_title: String?
+    let originalLanguage: String?
+    let originalTitle: String?
     let title: String?
-    let posterUrl: String?
-    let vote_average: Double?
+    let voteAverage: Double?
     let overview: String?
-    let release_date: String?
+    let releaseDate: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case popularity = "popularity"
+        case voteCount = "vote_count"
+        case posterPath = "poster_path"
+        case id = "id"
+        case adult = "adult"
+        case originalLanguage = "original_language"
+        case originalTitle = "original_title"
+        case title = "title"
+        case voteAverage = "vote_average"
+        case overview = "overview"
+        case releaseDate = "release_date"
+
+    }
 }

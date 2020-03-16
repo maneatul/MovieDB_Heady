@@ -21,6 +21,7 @@ class AppAssembly: Assembly {
     func assemble(container: Container) {
         assembleNetworking()
         assembleMovieListViewController()
+        assembleMovieDetailsViewController()
     }
 }
 
@@ -52,6 +53,15 @@ extension AppAssembly {
         
         container.storyboardInitCompleted(MoviesListViewController.self) { resolver, controller in
             controller.viewModel = resolver.resolve(MoviesListViewModel.self)
+        }
+    }
+    
+    func assembleMovieDetailsViewController() {
+        container.register(MovieDetailsViewModel.self) { resolver in
+            return MovieDetailsViewModel()
+        }
+        container.storyboardInitCompleted(MovieDetailsViewController.self) { resolver, controller in
+            controller.viewModel = resolver.resolve(MovieDetailsViewModel.self)
         }
     }
     

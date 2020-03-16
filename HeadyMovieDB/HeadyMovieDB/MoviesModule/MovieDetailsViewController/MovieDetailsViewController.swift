@@ -7,24 +7,36 @@
 //
 
 import UIKit
-
+import Kingfisher
 class MovieDetailsViewController: UIViewController {
+
+    
+    @IBOutlet weak var posterImage: UIImageView!
+    @IBOutlet weak var userRatings: UILabel!
+    
+    @IBOutlet weak var releaseDate: UILabel!
+    @IBOutlet weak var overview: UILabel!
+    var viewModel: MovieDetailsViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        title = viewModel.movie?.originalTitle
+        if let ratings = viewModel.movie?.voteAverage {
+            userRatings.text = "Ratings: \(ratings)"
+        }
+        
+        if let imageUrl = viewModel.movie?.posterPath {
+            posterImage.kf.setImage(with: URL(string: APPURL.ImageBaseUrl+imageUrl), placeholder: UIImage(named: "placeholderImage"))
+        }
+        if let date = viewModel.movie?.releaseDate {
+            releaseDate.text = "Release Date: \(date)"
+        }
+       
+        overview.text = viewModel.movie?.overview
+        
     }
-    */
 
 }

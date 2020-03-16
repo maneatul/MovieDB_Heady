@@ -60,7 +60,7 @@ class MoviesListViewController: UIViewController {
             self.moviesTable.reloadData()
         })
         let highRatedAction = UIAlertAction(title: "highest rated", style: .default, handler: { _ in
-            self.viewModel.movies = self.viewModel.movies.sorted(by: {$0.vote_average! > $1.vote_average!})
+            self.viewModel.movies = self.viewModel.movies.sorted(by: {$0.voteAverage! > $1.voteAverage!})
             self.moviesTable.reloadData()
         })
         alert.addAction(popularityAction)
@@ -90,7 +90,7 @@ extension MoviesListViewController: UITableViewDataSource {
 extension MoviesListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("didSelectRowAt \(viewModel.movies[indexPath.row])")
+        viewModel.pushMovieDetailsView(source: navigationController, movie: viewModel.movies[indexPath.row])
     }
 }
 

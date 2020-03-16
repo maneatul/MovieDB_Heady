@@ -83,8 +83,8 @@
 		32D999D0241C9E20000E8FBF /* HeadyMovieDB */ = {
 			isa = PBXGroup;
 			children = (
-				32D999E3241C9E66000E8FBF /* Core */,
-				32D999EE241CAC4F000E8FBF /* Movies */,
+				32D999E3241C9E66000E8FBF /* CoreModule */,
+				32D999EE241CAC4F000E8FBF /* MoviesModule */,
 				32D999D1241C9E20000E8FBF /* AppDelegate.swift */,
 				32D999D5241C9E20000E8FBF /* Main.storyboard */,
 				32D999D8241C9E2A000E8FBF /* Assets.xcassets */,
@@ -94,7 +94,7 @@
 			path = HeadyMovieDB;
 			sourceTree = "<group>";
 		};
-		32D999E3241C9E66000E8FBF /* Core */ = {
+		32D999E3241C9E66000E8FBF /* CoreModule */ = {
 			isa = PBXGroup;
 			children = (
 				32D999FC241CF7C5000E8FBF /* Workflow */,
@@ -104,7 +104,7 @@
 				32D999E5241C9E82000E8FBF /* Networking */,
 				32D999E4241C9E78000E8FBF /* Extensions */,
 			);
-			path = Core;
+			path = CoreModule;
 			sourceTree = "<group>";
 		};
 		32D999E4241C9E78000E8FBF /* Extensions */ = {
@@ -140,13 +140,13 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
-		32D999EE241CAC4F000E8FBF /* Movies */ = {
+		32D999EE241CAC4F000E8FBF /* MoviesModule */ = {
 			isa = PBXGroup;
 			children = (
 				32D999F0241CACA0000E8FBF /* MovieDetailsViewController */,
 				32D999EF241CAC94000E8FBF /* MoviesListViewController */,
 			);
-			path = Movies;
+			path = MoviesModule;
 			sourceTree = "<group>";
 		};
 		32D999EF241CAC94000E8FBF /* MoviesListViewController */ = {

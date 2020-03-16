@@ -18,8 +18,8 @@ class MovieTableViewCell: UITableViewCell {
     var movie: Movie? {
         didSet{
             self.movieTitle.text = movie?.title
-            self.movieReleaseYear.text = movie?.release_date
-            if let posterImage = movie?.poster_path {
+            self.movieReleaseYear.text = movie?.releaseDate
+            if let posterImage = movie?.posterPath {
                 self.moviePoster.kf.setImage(with: URL(string: APPURL.ImageBaseUrl+posterImage), placeholder: UIImage(named: "placeholderImage"))
             }
         }

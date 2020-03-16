@@ -11,7 +11,7 @@ import Swinject
 import SwinjectStoryboard
 
 protocol AppWorkflowType {
-   func pushMovieDetailsViewController()
+    func pushMovieDetailsViewController(source: UINavigationController?, movie: Movie)
 }
 
 class AppWorkflow: AppWorkflowType {
@@ -22,7 +22,9 @@ class AppWorkflow: AppWorkflowType {
         self.mainStoryboard = SwinjectStoryboard.create(name: "Main", bundle: nil,container: resolver)
     }
     
-    func pushMovieDetailsViewController(){
-    
+    func pushMovieDetailsViewController(source: UINavigationController?, movie: Movie){
+        let movieDetailsVC = mainStoryboard.instantiateViewController(withIdentifier: "MovieDetailsViewController") as! MovieDetailsViewController
+        movieDetailsVC.viewModel.movie = movie
+        source?.pushViewController(movieDetailsVC, animated: true)
     }
 }

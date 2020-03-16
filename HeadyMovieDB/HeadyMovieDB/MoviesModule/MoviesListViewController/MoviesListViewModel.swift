@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 class MoviesListViewModel {
     
     private var networkManager: NetworkManagerType
@@ -64,6 +64,10 @@ class MoviesListViewModel {
                 self?.moviesSuccessCallback?()
             }
         }
+    }
+    
+    func pushMovieDetailsView(source: UINavigationController?, movie: Movie) {
+        workflow.pushMovieDetailsViewController(source: source, movie: movie)
     }
 }
 
