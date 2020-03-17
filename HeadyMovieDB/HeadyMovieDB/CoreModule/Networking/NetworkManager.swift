@@ -14,7 +14,7 @@ enum NetworkError: Error {
 }
 
 protocol NetworkManagerType: class {
-    func fetchAllMovies(completion: @escaping ([Movie]?, Error?) -> ())
+    func fetchAllMovies(page: Int, completion: @escaping ([Movie]?, Error?) -> ())
     func searchMovies(searchKey: String, completion: @escaping ([Movie]?, Error?) -> ())
 }
 
@@ -26,8 +26,8 @@ class NetworkManager: NetworkManagerType {
         self.network = network
     }
     
-    func fetchAllMovies(completion: @escaping ([Movie]?, Error?) -> ()) {
-        let request = Request(method: .get, url: URL(string: APPURL.getDiscoverMovieUrl)!, parameters: ["api_key": APPURL.APIKEY])
+    func fetchAllMovies(page: Int, completion: @escaping ([Movie]?, Error?) -> ()) {
+        let request = Request(method: .get, url: URL(string: APPURL.getDiscoverMovieUrl)!, parameters: ["api_key": APPURL.APIKEY, "page": page])
         network.request(request, completion: completion)
     }
     

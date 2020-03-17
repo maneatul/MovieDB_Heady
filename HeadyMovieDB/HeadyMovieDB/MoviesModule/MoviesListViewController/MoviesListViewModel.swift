@@ -19,6 +19,7 @@ class MoviesListViewModel {
     
     var movies = [Movie]()
     var searchText = ""
+    var pageCount = 1
     var emptyStateMessage = "Search for a movie" {
         didSet {
             errorMessageCallback?(emptyStateMessage)
@@ -32,13 +33,13 @@ class MoviesListViewModel {
     
     func fetchMovies() {
         loaderCallback?(true)
-        networkManager.fetchAllMovies() {[weak self] (movies, error) in
+        networkManager.fetchAllMovies(page: pageCount) {[weak self] (movies, error) in
             self?.loaderCallback?(false)
             if let error = error {
                 self?.errorMessageCallback?(error.localizedDescription)
                 return
             } else {
-                self?.movies = movies ?? []
+                self?.movies += movies ?? []
                 if let isEmpty = self?.movies.isEmpty, isEmpty {
                     self?.emptyStateMessage = "No movies to display kindly search with different keyword"
                     self?.errorMessageCallback?(self?.emptyStateMessage ?? "")

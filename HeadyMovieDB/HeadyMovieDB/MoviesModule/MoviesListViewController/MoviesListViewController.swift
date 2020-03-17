@@ -88,9 +88,17 @@ extension MoviesListViewController: UITableViewDataSource {
 }
 
 extension MoviesListViewController: UITableViewDelegate {
-    
+   
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.pushMovieDetailsView(source: navigationController, movie: viewModel.movies[indexPath.row])
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastElement = viewModel.movies.count - 2
+        if indexPath.row == lastElement {
+            viewModel.pageCount += 1
+            viewModel.fetchMovies()
+        }
     }
 }
 
